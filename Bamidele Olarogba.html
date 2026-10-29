@@ -1,0 +1,438 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Bamidele Olarogba</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Source+Sans+3:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout concept: a service-desk case file. Left rail holds mono section labels, right column holds the content. Ticket-style result cards, change-log timeline. */
+:root {
+  --bg: #F2F5F5;
+  --surface: #FFFFFF;
+  --fg: #11262A;
+  --muted: #50656A;
+  --line: #D3DDDE;
+  --accent: #0B7A5E;
+  --accent-ink: #FFFFFF;
+  --tint: #DDF0EA;
+  --font-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --font-body: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0B191C; --surface: #12262A; --fg: #E4EEEE; --muted: #9DB3B6;
+    --line: #23393D; --accent: #43D1A2; --accent-ink: #06211A; --tint: #12352F;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0B191C; --surface: #12262A; --fg: #E4EEEE; --muted: #9DB3B6;
+  --line: #23393D; --accent: #43D1A2; --accent-ink: #06211A; --tint: #12352F;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.6;
+  padding-block: 0 56px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  -webkit-font-smoothing: antialiased;
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+a { color: var(--accent); }
+a:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+
+.wrap { max-width: 1040px; margin: 0 auto; }
+
+/* top bar */
+.topbar {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+  gap: 12px 24px; padding-block: 20px; border-bottom: 1px solid var(--line);
+}
+.mark { font-family: var(--font-display); font-weight: 800; letter-spacing: -0.01em; font-size: 18px; }
+.nav { display: flex; flex-wrap: wrap; gap: 6px 20px; font-family: var(--font-mono); font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; }
+.nav a { color: var(--muted); text-decoration: none; padding: 4px 0; }
+.nav a:hover { color: var(--accent); }
+
+/* hero */
+.hero { padding-block: 72px 56px; }
+.eyebrow { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin: 0 0 20px; }
+h1 {
+  font-family: var(--font-display); font-weight: 800; font-size: clamp(44px, 9vw, 96px);
+  line-height: 0.98; letter-spacing: -0.03em; margin: 0 0 16px; text-wrap: balance;
+}
+.role { font-family: var(--font-display); font-weight: 500; font-size: clamp(20px, 3vw, 28px); margin: 0 0 28px; color: var(--muted); }
+.lead { max-width: 62ch; font-size: 20px; line-height: 1.55; margin: 0 0 32px; }
+.cta-row { display: flex; flex-wrap: wrap; gap: 12px; }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-body); font-weight: 600; font-size: 16px;
+  padding: 12px 20px; border-radius: 4px; text-decoration: none; border: 1.5px solid var(--accent); cursor: pointer;
+  background: var(--accent); color: var(--accent-ink);
+}
+.btn.ghost { background: transparent; color: var(--accent); }
+.btn:hover { filter: brightness(1.08); }
+
+/* sections */
+.sec {
+  display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: 24px 48px;
+  padding-block: 56px; border-top: 1px solid var(--line);
+}
+.label { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); padding-top: 6px; }
+h2 { font-family: var(--font-display); font-weight: 700; font-size: clamp(26px, 4vw, 36px); line-height: 1.1; letter-spacing: -0.02em; margin: 0 0 24px; text-wrap: balance; }
+.sec p { margin: 0 0 16px; max-width: 66ch; }
+
+/* stats */
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+.stat { background: var(--surface); padding: 20px 18px; min-width: 0; }
+.stat b { display: block; font-family: var(--font-display); font-weight: 800; font-size: 40px; line-height: 1; letter-spacing: -0.03em; color: var(--accent); font-variant-numeric: tabular-nums; }
+.stat span { display: block; margin-top: 10px; font-size: 14px; line-height: 1.35; color: var(--muted); }
+
+/* result cards */
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: 20px; min-width: 0; display: flex; flex-direction: column; gap: 10px; }
+.card .top { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
+.tag { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+.pill { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; background: var(--tint); color: var(--accent); padding: 3px 8px; border-radius: 999px; }
+.card h3 { font-family: var(--font-display); font-weight: 700; font-size: 20px; line-height: 1.2; margin: 0; letter-spacing: -0.01em; }
+.card p { font-size: 15.5px; line-height: 1.5; color: var(--muted); margin: 0; }
+
+/* timeline */
+.log { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
+.entry { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 8px 28px; padding-block: 24px; border-bottom: 1px solid var(--line); }
+.entry:first-child { padding-top: 0; }
+.entry:last-child { border-bottom: 0; padding-bottom: 0; }
+.when { font-family: var(--font-mono); font-size: 12.5px; color: var(--muted); line-height: 1.5; font-variant-numeric: tabular-nums; }
+.when em { display: inline-block; font-style: normal; margin-top: 6px; color: var(--accent); }
+.entry h3 { font-family: var(--font-display); font-weight: 700; font-size: 21px; line-height: 1.2; margin: 0 0 2px; letter-spacing: -0.01em; }
+.org { color: var(--muted); font-size: 15px; margin: 0 0 12px; }
+.entry ul { margin: 0; padding-left: 18px; display: grid; gap: 8px; }
+.entry li { font-size: 16px; line-height: 1.5; max-width: 68ch; }
+.entry li::marker { color: var(--accent); }
+
+/* capabilities */
+.caps { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 28px 32px; }
+.caps h3 { font-family: var(--font-mono); font-weight: 500; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin: 0 0 10px; }
+.caps ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.caps li { font-size: 16px; padding-bottom: 6px; border-bottom: 1px solid var(--line); }
+
+/* education */
+.edu { list-style: none; margin: 0 0 32px; padding: 0; display: grid; gap: 16px; }
+.edu li { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 4px 16px; padding-bottom: 16px; border-bottom: 1px solid var(--line); }
+.edu b { font-family: var(--font-display); font-size: 18px; font-weight: 700; }
+.edu span { color: var(--muted); font-size: 15px; }
+.edu time { font-family: var(--font-mono); font-size: 12.5px; color: var(--muted); grid-row: 1; grid-column: 2; }
+h3.sub { font-family: var(--font-mono); font-weight: 500; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin: 0 0 12px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; margin: 0; padding: 0; }
+.chips li { border: 1px solid var(--line); background: var(--surface); border-radius: 999px; padding: 6px 14px; font-size: 15px; }
+
+/* contact */
+.contact { display: grid; gap: 12px; max-width: 520px; }
+.row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px; background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: 14px 16px; }
+.row .k { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); display: block; }
+.row .v { font-size: 18px; font-weight: 500; user-select: all; overflow-wrap: anywhere; }
+.copy { font-family: var(--font-mono); font-size: 12px; background: transparent; color: var(--accent); border: 1px solid var(--accent); border-radius: 4px; padding: 6px 12px; cursor: pointer; }
+.copy:hover { background: var(--tint); }
+.closing { font-family: var(--font-display); font-weight: 700; font-size: clamp(22px, 3.2vw, 30px); line-height: 1.2; letter-spacing: -0.015em; max-width: 24ch; margin: 0 0 24px; text-wrap: balance; }
+
+.foot { border-top: 1px solid var(--line); padding-top: 20px; font-family: var(--font-mono); font-size: 12px; color: var(--muted); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; }
+
+@media (max-width: 760px) {
+  body { font-size: 16.5px; }
+  .hero { padding-block: 48px 40px; }
+  .sec { grid-template-columns: minmax(0, 1fr); gap: 8px; padding-block: 40px; }
+  .label { padding-top: 0; }
+  .entry { grid-template-columns: minmax(0, 1fr); }
+  .lead { font-size: 18px; }
+}
+</style>
+
+<div class="wrap">
+  <header class="topbar">
+    <div class="mark">B. Olarogba</div>
+    <nav class="nav" aria-label="Sections">
+      <a href="#impact">Impact</a>
+      <a href="#results">Results</a>
+      <a href="#experience">Experience</a>
+      <a href="#capabilities">Capabilities</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero" aria-labelledby="name">
+    <p class="eyebrow">Customer experience &middot; Service operations &middot; Nigeria</p>
+    <h1 id="name">Bamidele Olarogba</h1>
+    <p class="role">Customer Experience Manager</p>
+    <p class="lead">I build service operations that customers notice for the right reasons: faster answers, fewer repeat problems and teams that own the outcome. Over 15 years I have moved from front-line product support to leading 15+ professionals across Technology, Operations and Product.</p>
+    <div class="cta-row">
+      <a class="btn" href="#impact">See the results</a>
+      <a class="btn ghost" href="#contact">Get in touch</a>
+    </div>
+  </section>
+
+  <section class="sec" id="impact" aria-labelledby="h-impact">
+    <div class="label">Impact in numbers</div>
+    <div>
+      <h2 id="h-impact">What the work has delivered</h2>
+      <div class="stats">
+        <div class="stat"><b>15+</b><span>years in service operations</span></div>
+        <div class="stat"><b>400+</b><span>service improvement projects delivered</span></div>
+        <div class="stat"><b>20%</b><span>faster service delivery</span></div>
+        <div class="stat"><b>30%</b><span>gain in departmental productivity</span></div>
+        <div class="stat"><b>15+</b><span>professionals led across functions</span></div>
+        <div class="stat"><b>400+</b><span>client sites supported</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="results" aria-labelledby="h-results">
+    <div class="label">Selected results</div>
+    <div>
+      <h2 id="h-results">Problems I have closed out</h2>
+      <div class="cards">
+        <article class="card">
+          <div class="top"><span class="tag">Service speed</span><span class="pill">Resolved</span></div>
+          <h3>20% faster service delivery</h3>
+          <p>Led cross-functional teams of 15+ through an Agile process redesign. Queries are answered sooner and service levels improved.</p>
+        </article>
+        <article class="card">
+          <div class="top"><span class="tag">Service framework</span><span class="pill">Resolved</span></div>
+          <h3>ITIL framework, end to end</h3>
+          <p>Designed and implemented an ITIL-based framework that raised service quality standards and cut downtime across customer-facing services.</p>
+        </article>
+        <article class="card">
+          <div class="top"><span class="tag">Process and automation</span><span class="pill">Resolved</span></div>
+          <h3>SOPs that shortened turnaround</h3>
+          <p>Wrote the SOPs and automated the workflows that reduced turnaround on customer issues and built a habit of accountability.</p>
+        </article>
+        <article class="card">
+          <div class="top"><span class="tag">Delivery at scale</span><span class="pill">Resolved</span></div>
+          <h3>400+ improvement projects</h3>
+          <p>Managed the escalations, risks and reporting that kept service projects aligned with business strategy.</p>
+        </article>
+        <article class="card">
+          <div class="top"><span class="tag">People</span><span class="pill">Resolved</span></div>
+          <h3>Teams coached to a customer-first standard</h3>
+          <p>Structured coaching programmes grew technical capability and a customer-first mindset at every touchpoint.</p>
+        </article>
+        <article class="card">
+          <div class="top"><span class="tag">Collaboration</span><span class="pill">Resolved</span></div>
+          <h3>Recurring pain points removed</h3>
+          <p>Worked with Technology, Operations and Product to turn customer feedback into product and process fixes.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="experience" aria-labelledby="h-exp">
+    <div class="label">Change log</div>
+    <div>
+      <h2 id="h-exp">Experience</h2>
+      <ol class="log">
+        <li class="entry">
+          <div class="when">May 2023 to present<br><em>Current role</em></div>
+          <div>
+            <h3>Senior Manager, IT Operations &amp; Service Excellence</h3>
+            <p class="org">Current Link Hospitality Systems, Nigeria</p>
+            <ul>
+              <li>Lead cross-functional service teams of 15+, setting clear performance expectations and coaching to service standards.</li>
+              <li>Introduced an ITIL-based framework with root-cause analysis protocols that reduced recurring issues and lifted customer satisfaction.</li>
+              <li>Own complex escalations from first report to post-incident review, so the same failure does not return.</li>
+              <li>Built KPI dashboards covering resolution rates, service levels, team productivity and satisfaction.</li>
+              <li>Moved service teams to Agile ways of working, shortening response cycles.</li>
+            </ul>
+          </div>
+        </li>
+        <li class="entry">
+          <div class="when">Apr 2019 to Apr 2023</div>
+          <div>
+            <h3>Operations Manager, Customer &amp; Service Operations</h3>
+            <p class="org">Current Link Hospitality Systems, Nigeria</p>
+            <ul>
+              <li>Ran multi-channel service operations against defined standards, quality benchmarks and SLA targets.</li>
+              <li>Rolled out new SOPs, escalation frameworks and workflows that cut resolution times.</li>
+              <li>Led process improvement projects that raised departmental productivity by 30%.</li>
+              <li>Negotiated CRM and helpdesk contracts that improved efficiency and customer data capture.</li>
+              <li>Reported complaint trends, resolution rates and NPS indicators to senior leadership.</li>
+            </ul>
+          </div>
+        </li>
+        <li class="entry">
+          <div class="when">Oct 2015 to Mar 2019</div>
+          <div>
+            <h3>Project Manager, Service Transformation &amp; Delivery</h3>
+            <p class="org">Current Link Hospitality Systems, Nigeria</p>
+            <ul>
+              <li>Managed a portfolio of 400+ service transformation and technology projects, on time, on budget and to standard.</li>
+              <li>Applied Scrum and Kanban to deliver 20% faster across service delivery.</li>
+              <li>Built risk management processes that protected customer-facing services across Nigeria and West Africa.</li>
+              <li>Removed silos between business units to align service standards across channels and geographies.</li>
+            </ul>
+          </div>
+        </li>
+        <li class="entry">
+          <div class="when">Jun 2011 to Sep 2015</div>
+          <div>
+            <h3>Technical Lead, Service Support &amp; Client Operations</h3>
+            <p class="org">Current Link Hospitality Systems, Nigeria</p>
+            <ul>
+              <li>Directed technical teams resolving enterprise issues across 400+ client sites.</li>
+              <li>Enforced IT governance and service quality standards on every client-facing rollout.</li>
+              <li>Mentored junior staff, which reduced escalations and improved first-contact resolution.</li>
+            </ul>
+          </div>
+        </li>
+        <li class="entry">
+          <div class="when">Mar 2010 to May 2011</div>
+          <div>
+            <h3>Product Support Specialist</h3>
+            <p class="org">Current Link Hospitality Systems, Nigeria</p>
+            <ul>
+              <li>Resolved complex hardware and software issues for a large client base with empathy and precision.</li>
+              <li>Worked with Product Development and QA to trace and fix customer-reported defects.</li>
+              <li>Wrote the troubleshooting and escalation documentation the support team still worked from.</li>
+            </ul>
+          </div>
+        </li>
+        <li class="entry">
+          <div class="when">Jan 2007 to Feb 2008</div>
+          <div>
+            <h3>System Administrator</h3>
+            <p class="org">Civilities International, Nigeria</p>
+            <ul>
+              <li>Kept infrastructure secure, reliable and fast for business and client-facing services.</li>
+              <li>Designed preventive maintenance programmes that reduced system downtime.</li>
+            </ul>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="sec" id="capabilities" aria-labelledby="h-cap">
+    <div class="label">Capabilities</div>
+    <div>
+      <h2 id="h-cap">What I bring to a CX team</h2>
+      <div class="caps">
+        <div>
+          <h3>Lead and coach</h3>
+          <ul>
+            <li>Customer experience operations and leadership</li>
+            <li>Team coaching, mentoring and performance management</li>
+            <li>Change management and service transformation</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Run the service</h3>
+          <ul>
+            <li>Escalation management and complex issue resolution</li>
+            <li>Service quality and standards management</li>
+            <li>ITIL service management framework</li>
+            <li>Complaint handling and customer satisfaction</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Measure and improve</h3>
+          <ul>
+            <li>CX metrics, KPI development and dashboard reporting</li>
+            <li>Data analysis and business insight translation</li>
+            <li>Root-cause analysis and continuous improvement</li>
+            <li>CRM, helpdesk and ticketing platform management</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Design and partner</h3>
+          <ul>
+            <li>Customer journey improvement and process redesign</li>
+            <li>SOP design and workflow automation</li>
+            <li>Cross-functional stakeholder collaboration</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="education" aria-labelledby="h-edu">
+    <div class="label">Education and credentials</div>
+    <div>
+      <h2 id="h-edu">Learning that backs the practice</h2>
+      <ul class="edu">
+        <li><b>Executive MBA</b><time datetime="2024-06">Jun 2024</time><span>Rome Business School, Italy</span></li>
+        <li><b>MSc, Project Management</b><time datetime="2024-04">Apr 2024</time><span>Valencian International University, Spain</span></li>
+        <li><b>BSc, Mathematics</b><time datetime="2005-06">Jun 2005</time><span>Lagos State University, Nigeria</span></li>
+      </ul>
+      <h3 class="sub">Professional development</h3>
+      <ul class="chips">
+        <li>ITIL Service Management Framework (certified)</li>
+        <li>Agile and Scrum project management</li>
+        <li>PMO governance and methodology standardisation</li>
+        <li>KPI development and CX analytics</li>
+        <li>Change management and digital service transformation</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec" id="contact" aria-labelledby="h-contact">
+    <div class="label">Contact</div>
+    <div>
+      <h2 class="closing" id="h-contact">Let us talk about your customers.</h2>
+      <p>I am open to customer experience and service operations leadership roles. Send a note and I will reply promptly.</p>
+      <div class="contact">
+        <div class="row">
+          <div><span class="k">Email</span><span class="v" id="v-email">rogbayinka@yahoo.com</span></div>
+          <button class="copy" type="button" data-target="v-email" id="copy-email">Copy</button>
+        </div>
+        <div class="row">
+          <div><span class="k">Phone</span><span class="v" id="v-phone">+234-803-6860068</span></div>
+          <button class="copy" type="button" data-target="v-phone" id="copy-phone">Copy</button>
+        </div>
+        <div class="row">
+          <div><span class="k">Based in</span><span class="v">Nigeria</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <span>Bamidele Olarogba</span>
+    <span>Customer Experience Manager</span>
+  </footer>
+</div>
+
+<script>
+(function () {
+  var buttons = document.querySelectorAll('.copy');
+  function selectText(el) {
+    try {
+      var r = document.createRange(); r.selectNodeContents(el);
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+    } catch (e) {}
+  }
+  buttons.forEach(function (b) {
+    b.addEventListener('click', function () {
+      var el = document.getElementById(b.getAttribute('data-target'));
+      var text = el.textContent.trim();
+      var done = function (msg) {
+        b.textContent = msg;
+        setTimeout(function () { b.textContent = 'Copy'; }, 1800);
+      };
+      try {
+        navigator.clipboard.writeText(text).then(
+          function () { done('Copied'); },
+          function () { selectText(el); done('Selected'); }
+        );
+      } catch (e) { selectText(el); done('Selected'); }
+    });
+  });
+})();
+</script>
+
+</body></html>
